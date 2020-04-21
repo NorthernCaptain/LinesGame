@@ -11,12 +11,13 @@
     "@babel/preset-env": "^7.9.5",
     "babelify": "^10.0.0",
     "browserify": "^16.5.1",
+    "cpx": "^1.5.0",
     "terser": "^4.6.11",
     "watchify": "^3.11.1"
   },
   "scripts": {
     "build-js": "browserify -d ./js/main.js -o ./public/js/bundle.js",
-    "build": "browserify ./js/main.js | terser -c -m -o ./public/js/bundle.js",
+    "build": "cpx index.html public/ & cpx 'css/*' public/css/ & cpx 'fonts/*' public/fonts/ & browserify ./js/main.js | terser -c -m -o ./public/js/bundle.js",
     "watch": "watchify ./js/main.js -o ./public/js/bundle.js -v -d"
   },
   "dependencies": {
